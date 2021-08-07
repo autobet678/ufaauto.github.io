@@ -53,8 +53,15 @@ or my LIFF of result:
 https://liff.line.me/1654395981-1Enp60g8
 ```
 
-## Options
+## Query Params:
 
+|Name|Require|Description|
+|-|-|-|
+| liffId | yes | LIFF ID e.g. `1234-abcd`. |
+| content | yes | Url of json content file or api. |
+
+
+## Options
 
 ### Content Parameter
 use e.g. `{{parameterKey}}` place to somewhare on your content will replace by data from line.
@@ -63,11 +70,3 @@ use e.g. `{{parameterKey}}` place to somewhare on your content will replace by d
 |-|-|
 | profile.`key`  | Can access all key and return follow [liff.getProfile()](https://developers.line.biz/en/reference/liff/#get-profile) `displayName` `pictureUrl` `statusMessage` `userId`, e.g. `{{profile.displayName}}`|
 | shareThis | Return current LIFF url and all query params  e.g. `{{shareThis}}` |
-
-
-## Query Params:
-
-|Name|Require|Description|
-|-|-|-|
-| liffId | yes | LIFF ID e.g. `1234-abcd`. |
-| content | yes | Url of json content file or api. |
