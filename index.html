@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share Target Picker</title>
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <style>
+        body {
+            font-family: Verdana, sans-serif;
+            display: flex;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            justify-content: center;
+        }
+
+        #shareBtn {
+            display: none;
+            /* display: inline-block; */
+            padding: 15px 40px;
+            border-radius: 10px;
+            font-size: 20px;
+            background: #00b900;
+            color: #ffffff;
+            box-shadow: 0 0 5px #00000054;
+        }
+
+        #loading {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="shareBtn" onclick="sendShare()">Share</div>
+    <div id="loading" onclick="sendShare()">loading...</div>
+    <script>
+        const queryString = decodeURIComponent(window.location.search).replace("?liff.state=", "");
+        const params = new URLSearchParams(queryString);
+        let liffId
+        let profile = {
+            displayName: "",
+            pictureUrl: "",
+            statusMessage: "",
+            userId: ""
+        }
+        let content
+        const shareBtn = document.getElementById("shareBtn")
+        const loading = document.getElementById("loading")
+
+        async function sendShare() {
+            const result = await liff.shareTargetPicker(content)
+            liff.closeWindow()
+            // if (result) {
+            //     alert(`[${result.status}] Message sent!`)
+            // } else {
+            //     const [majorVer, minorVer, patchVer] = (liff.getLineVersion() || "").split('.');
+
+            //     if (minorVer === undefined) {
+            //         alert('ShareTargetPicker was canceled in external browser')
+            //         return
+            //     }
+
+            //     if (parseInt(majorVer) >= 10 && parseInt(minorVer) >= 10 && parseInt(patchVer) > 0) {
+            //         alert('ShareTargetPicker was canceled in LINE app')
+            //     }
+            // }
+        }
+
+        async function liffLogin() {
+            return new Promise(async (resolve, reject) => {
+                await liff.init({
+                    liffId
+                })
+                if (!liff.isLoggedIn()) {
+                    if (!liff.isInClient()) {
+                        // set `redirectUri` to redirect the user to a URL other than the front page of your LIFF app.
+                        await liff.login({
+                            redirectUri: window.location.href
+                        });
+                    }
+                } else {
+                    resolve()
+                }
+            });
+        }
+
+        async function fetchContent() {
+            const contentUrl = params.get('content');
+            if (!contentUrl) {
+                throw {
+                    emsg: 'no content url'
+                }
+            }
+
+            const res = await fetch(contentUrl)
+            content = await res.json()
+        }
+
+        async function prepareContent() {
+            // replace handlebars key
+
+            let stringContent = JSON.stringify(content)
+
+            // replace profile
+            Object.keys(profile).forEach(e => {
+                stringContent = stringContent.replace(`{{profile.${e}}}`, profile[e])
+            })
+
+            // replace this liff url
+            stringContent = stringContent.replace(`{{shareThis}}`, `https://liff.line.me/${liffId}${queryString}`)
+
+            content = JSON.parse(stringContent)
+        }
+
+        async function getLiffId() {
+            liffId = params.get("liffId")
+            if (!liffId) {
+                throw {
+                    emsg: 'no liffId'
+                }
+            }
+        }
+
+        async function main() {
+            try {
+                await getLiffId()
+                await liffLogin(liffId)
+                profile = {
+                    ...profile,
+                    ...await liff.getProfile()
+                }
+                await fetchContent()
+                await prepareContent()
+                loading.style.display = "none"
+                if (liff.isInClient()) {
+                    await sendShare()
+                } else {
+                    document.getElementById("shareBtn").style.display = "inline-block"
+                }
+            } catch (err) {
+                console.log('error:', err)
+                alert("ขออภัย เกิดข้อผิดพลาด " + err.emsg)
+                loading.style.display = "none"
+            }
+        }
+
+        console.log('run')
+
+        main()
+    </script>
+</body>
+
+</html>
