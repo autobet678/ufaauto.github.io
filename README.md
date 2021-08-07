@@ -48,9 +48,9 @@ content url (it's flex with use parameter):
 https://tues.cc/line/shareTargetPicker/exampleFlex.json
 ```
 \
-or my LIFF of result:
+or my result LIFF Url:
 ```json
-https://liff.line.me/1654395981-1Enp60g8
+https://liff.line.me/1654395981-1Enp60g8?content=https://tues.cc/line/shareTargetPicker/exampleFlex.json
 ```
 
 ## Query Params:
