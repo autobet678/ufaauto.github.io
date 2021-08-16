@@ -6,8 +6,8 @@ Example static web file to use feature shareTargetPicker api (integrate with LIF
 
 ## Features!
 
-  - Customs share dynamic content from query url.
-  - Use parameter in your content to replace with user data from LINE.
+  - Customs share dynamic messages from query url.
+  - Use parameter in your messages to replace with user data from LINE.
   - Compatible with both on LINE application and external browser.
 
 
@@ -15,24 +15,24 @@ Example static web file to use feature shareTargetPicker api (integrate with LIF
 
 You just copy only index.html file and place to some static web host, such as [GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site).
 
-Create you content to share, such as flex message, see example in [exampleFlex.json](https://github.com/angkarn/line-share-target-picker/blob/main/exampleFlex.json).
+Create you messages to share, such as flex message, follow at [liff.shareTargetPicker()](https://developers.line.biz/en/reference/liff/#share-target-picker) or get example data in [exampleFlexMessages.json](https://github.com/angkarn/line-share-target-picker/blob/main/exampleFlexMessages.json).
 
-*options*:  use [parameter](#content-parameter) for replace your content with data from line
+*options*:  use [parameter](#messages-parameter) for replace your messages with data from line
 
- Put your content file or api to somewhere host, you can quick try on some free service like [mocki.io](https://mocki.io/fake-json-api) or [create file on github](https://docs.github.com/en/github/managing-files-in-a-repository/managing-files-on-github/creating-new-files) as well.
+ Put your messages file or api to somewhere host, you can quick try on some free service like [mocki.io](https://mocki.io/fake-json-api) or [create file on github](https://docs.github.com/en/github/managing-files-in-a-repository/managing-files-on-github/creating-new-files) as well.
  
 Create LIFF and enter full url of index.html is placed and along with [query params](#query-params) with value from the above steps to *Endpoint URL* setting.
 e.g. *value in Endpoint URL*
 ```json
-https://mysite.com/sharetarget/index.html?liffId=1234-abcd&content=https://mysite.com/flex.json
+https://mysite.com/sharetarget/index.html?liffId=1234-abcd&messages=https://mysite.com/messages.json
 ```
 ---
 Try to enter LIFF url is created on Line App such as, *Text Message*, *Flex message*, *Rich menu* to view result. 👍
 
-PS. You can split content query params on *Endpoint URL*  and place it after LIFF URL.
+PS. You can split messages query params on *Endpoint URL*  and place it after LIFF URL.
 e.g.
 ```json
-https://liff.line.me/1234-abcd?content=https://mysite.com/flex.json
+https://liff.line.me/1234-abcd?messages=https://mysite.com/messages.json
 ```
 
 ## Demo
@@ -43,14 +43,14 @@ app url:
 https://tues.cc/line/shareTargetPicker
 ```
 \
-content url (it's flex with use parameter):
-```json
-https://tues.cc/line/shareTargetPicker/exampleFlex.json
+messages url (it's flex with use parameter):
+```
+https://tues.cc/line/shareTargetPicker/exampleFlexMessages.json
 ```
 \
 or my result LIFF Url:
 ```json
-https://liff.line.me/1654395981-1Enp60g8?content=https://tues.cc/line/shareTargetPicker/exampleFlex.json
+https://liff.line.me/1654395981-1Enp60g8?messages=https://tues.cc/line/shareTargetPicker/exampleFlexMessages.json
 ```
 
 ## Query Params:
@@ -58,13 +58,13 @@ https://liff.line.me/1654395981-1Enp60g8?content=https://tues.cc/line/shareTarge
 |Name|Require|Description|
 |-|-|-|
 | liffId | yes | LIFF ID e.g. `1234-abcd`. |
-| content | yes | Url of json content file or api. |
+| messages | yes | Url of json messages file or api. |
 
 
 ## Options
 
-### Content Parameter
-use e.g. `{{parameterKey}}` place to somewhare on your content will replace by data from line.
+### Messages Parameter
+use e.g. `{{parameterKey}}` place to somewhare on your messages will replace by data from line.
 
 |Key|Description|
 |-|-|
