@@ -1,0 +1,134 @@
+[{
+  "type": "flex",
+  "altText": "เฮงไม่จำกัดเวลา เเจกเครดิตฟรีไม่อั้น!!",
+  "contents": {
+  "type": "carousel",
+  "contents": [
+    {
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "url": "https://www.img.in.th/images/6e4c94d54792b5a1acadc45c70b4f4fb.jpg",
+        "size": "full",
+        "aspectRatio": "1:1"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "เเจกเครดิตฟรี !!",
+            "weight": "bold",
+            "align": "center",
+            "color": "#FF0000",
+            "margin": "md",
+            "size": "xl"
+          },
+          {
+            "type": "text",
+            "text": "สมาชิกใหม่รับได้ทันที สามารถเล่นได้ทุกค่าย ถอนได้จริง ระบบอัตโนมัติทำรายการด้วยตนเอง",
+            "wrap": true,
+            "align": "center",
+            "size": "xs",
+            "color": "#B22222"
+          },
+          {
+            "type": "image",
+            "url": "https://www.img.in.th/images/797910a02fe24787220d75b537d34c55.png",
+            "size": "full",
+            "aspectRatio": "1:1",
+            "action": {
+              "type": "uri",
+              "label": "action",
+              "uri": "https://lin.ee/wTZfTMP"
+            }
+          },
+          {
+            "type": "image",
+            "url": "https://sv1.picz.in.th/images/2021/09/16/CjqXvD.png",
+            "size": "full",
+            "aspectRatio": "3:1",
+            "aspectMode": "fit",
+            "animated": true,
+            "action": {
+              "type": "uri",
+              "label": "action",
+              "uri": "https://lin.ee/wTZfTMP"
+            }
+          }
+        ],
+        "background": {
+          "type": "linearGradient",
+          "angle": "0deg",
+          "startColor": "#FFD700",
+          "endColor": "#FFD700",
+          "centerColor": "#FFD700"
+        },
+        "spacing": "none"
+      }
+    },
+    {
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "url": "https://www.img.in.th/images/104a9612099a9d07a0ed3a208b8795a8.jpg",
+        "size": "full"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "สมาชิกใหม่รับโบนัส 100%",
+            "weight": "bold",
+            "size": "xl",
+            "color": "#FF0000",
+            "align": "center",
+            "margin": "md"
+          },
+          {
+            "type": "text",
+            "color": "#B22222",
+            "text": "สมัครเวลานี้รับโบนัสได้ทันที 100% โบนัสเพียบฝากถอนไม่อั้น ผ่านระบบอัตโนมัติ",
+            "size": "xs",
+            "wrap": true,
+            "align": "center"
+          },
+          {
+            "type": "image",
+            "url": "https://www.img.in.th/images/4f5dd6460ea36785cc41895aaa0576d8.png",
+            "size": "full",
+            "aspectRatio": "1:1",
+            "aspectMode": "cover",
+            "action": {
+              "type": "uri",
+              "label": "action",
+              "uri": "https://lin.ee/wTZfTMP"
+            }
+          },
+          {
+            "type": "image",
+            "url": "https://www.img.in.th/images/2d807cd722ce024052886dae39019804.png",
+            "size": "full",
+            "aspectRatio": "3:1",
+            "action": {
+              "type": "uri",
+              "label": "action",
+              "uri": "https://lin.ee/wTZfTMP"
+            }
+          }
+        ],
+        "background": {
+          "type": "linearGradient",
+          "angle": "0deg",
+          "startColor": "#FFD700",
+          "endColor": "#FFD700",
+          "centerColor": "#FFD700"
+        }
+      }
+    }
+  ]
+}
+}]
